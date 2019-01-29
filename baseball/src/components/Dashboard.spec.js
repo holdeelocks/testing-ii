@@ -9,6 +9,7 @@ describe('<Dashboard />', () => {
 		const { getByText, getByTestId } = render(<Dashboard />);
 		const selected = getByTestId('strikes');
 		const button = getByText(/add strike/i);
+		const outs = getByTestId('outs');
 
 		it('should add a strike', () => {
 			fireEvent.click(button);
@@ -18,9 +19,24 @@ describe('<Dashboard />', () => {
 			fireEvent.click(button);
 			expect(selected).toHaveTextContent(/2 strikes/i);
 		});
-		it('should go back to 0 for third strike', () => {
+		it('should go back to 0 for third strike and 1 out', () => {
 			fireEvent.click(button);
 			expect(selected).toHaveTextContent(/0 strikes/i);
+			expect(outs).toHaveTextContent(/1 outs/i);
+		});
+		it('should go back to 0 for third strike and 2 outs', () => {
+			fireEvent.click(button);
+			fireEvent.click(button);
+			fireEvent.click(button);
+			expect(selected).toHaveTextContent(/0 strikes/i);
+			expect(outs).toHaveTextContent(/2 outs/i);
+		});
+		it('should go back to 0 for third strike and 0 outs (3rd out)', () => {
+			fireEvent.click(button);
+			fireEvent.click(button);
+			fireEvent.click(button);
+			expect(selected).toHaveTextContent(/0 strikes/i);
+			expect(outs).toHaveTextContent(/0 outs/i);
 		});
 	});
 

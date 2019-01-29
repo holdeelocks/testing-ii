@@ -19,7 +19,6 @@ class Dashboard extends React.Component {
 	};
 
 	strike = () => {
-		// e.preventDefault();
 		const count = { ...this.state };
 		const strikes = (count.strikes += 1);
 		let outs = count.outs;

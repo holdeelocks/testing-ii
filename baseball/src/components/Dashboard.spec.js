@@ -9,6 +9,7 @@ describe('<Dashboard />', () => {
 		const { getByText, getByTestId } = render(<Dashboard />);
 		const selected = getByTestId('strikes');
 		const button = getByText(/add strike/i);
+
 		it('should add a strike', () => {
 			fireEvent.click(button);
 			expect(selected).toHaveTextContent(/1 strikes/i);
@@ -27,6 +28,7 @@ describe('<Dashboard />', () => {
 		const { getByText, getByTestId } = render(<Dashboard />);
 		const selected = getByTestId('balls');
 		const button = getByText(/add ball/i);
+
 		it('should go from 0 to 1 balls', () => {
 			fireEvent.click(button);
 			expect(selected).toHaveTextContent(/1 balls/i);
@@ -49,6 +51,7 @@ describe('<Dashboard />', () => {
 		const { getByText, getByTestId } = render(<Dashboard />);
 		const selected = getByTestId('strikes');
 		const button = getByText(/foul ball/i);
+
 		it('should go from 0 to 1 strikes', () => {
 			fireEvent.click(button);
 			expect(selected).toHaveTextContent(/1 strikes/i);
@@ -73,6 +76,7 @@ describe('<Dashboard />', () => {
 		const hitButton = getByText(/hit/i);
 		const strikeButton = getByText(/add strike/i);
 		const ballButton = getByText(/add ball/i);
+
 		it('should zero out 1 strike and 0 balls', () => {
 			fireEvent.click(strikeButton);
 			fireEvent.click(hitButton);

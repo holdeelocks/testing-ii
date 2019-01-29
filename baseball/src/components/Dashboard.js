@@ -7,11 +7,52 @@ class Dashboard extends React.Component {
 		balls: 0
 	};
 
+	ball = () => {
+		const count = { ...this.state };
+		const balls = (count.balls += 1);
+		if (balls >= 4) {
+			this.setState({ balls: 0, strikes: 0 });
+		} else {
+			this.setState({ balls });
+		}
+	};
+
+	strike = () => {
+		// e.preventDefault();
+		const count = { ...this.state };
+		const strikes = (count.strikes += 1);
+		if (strikes >= 3) {
+			this.setState({ balls: 0, strikes: 0 });
+		} else {
+			this.setState({ strikes: strikes });
+		}
+	};
+
+	hit = () => {
+		this.setState({ balls: 0, strikes: 0 });
+	};
+
+	foul = () => {
+		const count = { ...this.state };
+		let strikes = count.strikes;
+		if (strikes === 2) {
+			return;
+		} else {
+			strikes += 1;
+			this.setState({ strikes });
+		}
+	};
+
 	render() {
 		// const { strikes, balls } = this.state;
 		return (
 			<div className="dashboard">
 				<Display count={this.state} />
+
+				<button onClick={this.strike}>Add Strike</button>
+				<button onClick={this.ball}>Add Ball</button>
+				<button onClick={this.hit}>Hit</button>
+				<button onClick={this.foul}>Foul Ball</button>
 			</div>
 		);
 	}

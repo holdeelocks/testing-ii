@@ -1,10 +1,11 @@
 import React from 'react';
 
-const Display = ({ balls, strikes }) => {
+const Display = ({ count }) => {
+	// console.log(balls, strikes);
 	return (
-		<div className="display">
-			<p className="balls">{balls} balls</p>
-			<p className="strikes">{strikes} strikes</p>
+		<div className="display" data-testid="display">
+			<p data-testid="balls">{count.balls} balls</p>
+			<p data-testid="strikes">{count.strikes} strikes</p>
 		</div>
 	);
 };

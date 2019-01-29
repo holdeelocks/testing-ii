@@ -8,10 +8,10 @@ class Dashboard extends React.Component {
 	};
 
 	render() {
-		const { strikes, balls } = this.state;
+		// const { strikes, balls } = this.state;
 		return (
 			<div className="dashboard">
-				<Display strikes={strikes} balls={balls} />
+				<Display count={this.state} />
 			</div>
 		);
 	}

@@ -4,7 +4,8 @@ import Display from './Display';
 class Dashboard extends React.Component {
 	state = {
 		strikes: 0,
-		balls: 0
+		balls: 0,
+		outs: 0
 	};
 
 	ball = () => {
@@ -21,8 +22,12 @@ class Dashboard extends React.Component {
 		// e.preventDefault();
 		const count = { ...this.state };
 		const strikes = (count.strikes += 1);
+		let outs = count.outs;
 		if (strikes >= 3) {
-			this.setState({ balls: 0, strikes: 0 });
+			outs += 1;
+			outs > 2
+				? this.setState({ balls: 0, outs: 0, strikes: 0 })
+				: this.setState({ balls: 0, strikes: 0, outs });
 		} else {
 			this.setState({ strikes: strikes });
 		}

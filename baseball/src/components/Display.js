@@ -1,11 +1,12 @@
 import React from 'react';
 
 const Display = ({ count }) => {
-	// console.log(balls, strikes);
+	const { balls, strikes, outs } = count;
 	return (
 		<div className="display" data-testid="display">
-			<p data-testid="balls">{count.balls} balls</p>
-			<p data-testid="strikes">{count.strikes} strikes</p>
+			<p data-testid="balls">{balls} balls</p>
+			<p data-testid="strikes">{strikes} strikes</p>
+			<p data-testid="outs">{outs} outs</p>
 		</div>
 	);
 };
